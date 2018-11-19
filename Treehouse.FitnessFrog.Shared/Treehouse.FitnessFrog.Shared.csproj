@@ -80,7 +80,9 @@
   <ItemGroup>
     <Compile Include="App_Start\SimpleInjectorWebApiInitializer.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ActivitiesController.cs" />
     <Compile Include="Controllers\EntriesController.cs" />
+    <Compile Include="Controllers\IntensitiesController.cs" />
     <Compile Include="Data\ActivitiesRepository.cs" />
     <Compile Include="Data\BaseRepository.cs" />
     <Compile Include="Data\Context.cs" />
