@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Treehouse.FitnessFrog.Shared.Data;
 using Treehouse.FitnessFrog.Shared.Models;
+using Treehouse.FitnessFrog.Spa.DTO;
 
-namespace Treehouse.FitnessFrog.Shared.Controllers
+namespace Treehouse.FitnessFrog.Spa.Controllers
 {
     public class EntriesController : ApiController
     {
@@ -20,7 +21,7 @@ namespace Treehouse.FitnessFrog.Shared.Controllers
 
         public Entry GetEntry(int id)
         {
-            return null;
+            return _entriesRepository.Get(id, false);
         }
 
         public IHttpActionResult GetEntries()
@@ -28,16 +29,28 @@ namespace Treehouse.FitnessFrog.Shared.Controllers
             return Ok(_entriesRepository.GetList());
         }
 
-        public IHttpActionResult Post(Entry entry)
+        public IHttpActionResult Post(EntryDto entry)
         {
-            _entriesRepository.Add(entry);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var entryModel = entry.ToModel();
+            _entriesRepository.Add(entryModel);
             return Created(
                 Url.Link("DefaultApi", new { controller = "Entries", id = entry.Id }), entry);
         }
 
-        public void Put(int id, Entry entry)
+        public IHttpActionResult Put(int id, EntryDto entry)
         {
-            _entriesRepository.Update(entry);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _entriesRepository.Update(entry.ToModel());
+
+            return StatusCode(System.Net.HttpStatusCode.NoContent);
         }
 
         public void Delete(int id)

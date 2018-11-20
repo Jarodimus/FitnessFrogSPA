@@ -1,6 +1,6 @@
-[assembly: WebActivator.PostApplicationStartMethod(typeof(Treehouse.FitnessFrog.Shared.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
+[assembly: WebActivator.PostApplicationStartMethod(typeof(Treehouse.FitnessFrog.Spa.App_Start.SimpleInjectorWebApiInitializer), "Initialize")]
 
-namespace Treehouse.FitnessFrog.Shared.App_Start
+namespace Treehouse.FitnessFrog.Spa.App_Start
 {
     using System.Web.Http;
     using SimpleInjector;
@@ -24,7 +24,7 @@ namespace Treehouse.FitnessFrog.Shared.App_Start
             GlobalConfiguration.Configuration.DependencyResolver =
                 new SimpleInjectorWebApiDependencyResolver(container);
         }
-     
+
         private static void InitializeContainer(Container container)
         {
             container.Register<Context>(Lifestyle.Scoped);

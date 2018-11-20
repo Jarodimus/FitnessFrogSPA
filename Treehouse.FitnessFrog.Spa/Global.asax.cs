@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Http;
+using Treehouse.FitnessFrog.Spa.App_Start;
 
 namespace Treehouse.FitnessFrog.Spa
 {

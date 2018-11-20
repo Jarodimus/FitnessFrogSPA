@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Serialization;
 using System.Web.Http;
 
-namespace Treehouse.FitnessFrog.Spa
+namespace Treehouse.FitnessFrog.Spa.App_Start
 {
     public static class WebApiConfig
     {
